@@ -1,0 +1,39 @@
+void siftup(n)
+		pre	 heap(1, n-1) && n > 0
+		post heap(1, n)
+	i = n
+	loop
+		/*
+		invariant: heap(1, n) except perhaps
+		between i and its' parent
+		*/
+		if i == 1
+			break
+		p = i / 2
+		if x[p] <= x[i]
+			break
+		swap(p, i)
+		i = p
+
+void siftdown(n)
+		pre  heap(2, n) && n >= 0
+		post heap(1, n)
+	i = 1
+	loop
+		/*
+		invariant: heap(1, n) except perhaps
+		between i and it's children
+		*/
+		c = 2 * i
+		if c > n
+			break
+		// c is the left children of i
+		if c + 1 <= n
+			// c+1 is the right children of i
+			if x[c+1] < c[c]
+				c++
+		// c is the lesser children of i
+		if x[i] <= x[c]
+			break
+		swap(c, i)
+		i = c 
